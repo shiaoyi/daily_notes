@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="main.js"></script>
+    <style type="text/css">
+        html,body{
+            margin: 0px;
+        }
+        
+        .yellow{
+            background-color: yellow;
+        }
+    </style>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',function(){
+            //getElementById用來指到id
+            var idtest = document.getElementById('idtest');
+            //getElementsByClassName可用來指很多class
+            var classtest = document.getElementsByClassName('classtest');
+            //querySelector指class或id都行，這裡只指到test下第一個p，>沒有也沒關係
+            var test = document.querySelector(".test > p");
+            test.style.color = "green";
+            //如果要選到test下面全部的p，就要用querySelectorAll，再用test[0]陣列的方式去指定
+            //test[0]是Hello，test[1]是Welcome
+
+            //createElement用來製造元素節點
+            var span = document.createElement("span");
+            //appendChild是在畫面新增一個節點，所以後面要接一個節點
+            test.appendChild(span);
+            //所以appendChild和createElement能結合成一個式子
+            test.appendChild(document.createElement("span"));
+            
+            //classList用來添加元素的class，所以根據style裡的yellow class，span的背景會變黃的
+            span.classList.add("yellow");
+            span.innerHTML = " Sunny!";
+
+            //用toggle做按鈕互動，toggle像開關鍵，開sunny背景會變亮黃，關會無背景色
+            document.querySelector('#btn').addEventListener('click', () =>{
+                document.querySelector('.test span').classList.toggle('yellow');
+            })
+        })
+        
+    </script>
+</head>
+<body>
+    <div id="idtest"></div>
+    <div class="test">
+        <p class="classtest">Hello</p>
+        <p class="classtest">Welcome</p>
+    </div>
+    <input type="button" id="btn" value="click me" />
+</body>
+<script type="text/javascript" >
+    
+</script>
+</html>
